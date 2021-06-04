@@ -5,6 +5,8 @@ class CreateCarsTable < ActiveRecord::Migration[5.2]
       t.string :make
       t.string :model
       t.integer :user_id
+
+    
     end
   end
 end
