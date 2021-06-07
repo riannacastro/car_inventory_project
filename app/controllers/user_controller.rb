@@ -9,8 +9,11 @@ class UserController < ApplicationController
     post '/signup' do
         user = User.new(username: params[:username], password: params[:password])
         if user.username.blank? || user.password.blank? || User.find_by_username(params["username"])
-        redirect to 'users/signup'
+        redirect to '/signup'
         else
+            user.save
+            #binding.pry
+            session[:user_id] = user.id
             redirect to '/inventory'
         end
     end
