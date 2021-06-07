@@ -1,2 +1,7 @@
+<% if logged_in? %>
 <title> Hello, <%= current_user.username %></title>
+<% end %>
 <h1>Car Inventory</h1>
+<form method='POST' action='/logout'>
+<input type="submit" value="Log Out">
+</form>
