@@ -14,12 +14,13 @@ class UserController < ApplicationController
             user.save
             #binding.pry
             session[:user_id] = user.id
-            redirect to '/inventory'
+            redirect to '/cars'
         end
     end
 
     post '/logout' do
         session.clear
+        redirect to '/'
     end
 
 
