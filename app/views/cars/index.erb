@@ -1,7 +1,13 @@
 <% if logged_in? %>
 <title> Hello, <%= current_user.username %></title>
 <% end %>
-<h1>Car Inventory</h1>
+<h1>Car Inventory:</h1>
+<ul>
+<% @cars.each do |c| %>
+    <li><%= c.year %> <%= c.make %> <%= c.model %></li>
+    <% end %>
+</ul>
+
 <form method='POST' action='/logout'>
 <input type="submit" value="Log Out">
 </form>

@@ -8,6 +8,9 @@ class CarController < ApplicationController
     end
 
     get '/cars/:id' do
+        @car = Car.find(params[:id])
+
+        erb :'cars/show'
     end
     
     get '/cars/new' do
