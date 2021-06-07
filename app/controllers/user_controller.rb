@@ -18,6 +18,8 @@ class UserController < ApplicationController
         end
     end
 
+    # User signs up and doesn't redirect to '/cars'
+
     post '/logout' do
         session.clear
         redirect to '/'
