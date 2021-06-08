@@ -1,0 +1,8 @@
+<h1>EDIT YOUR <%= @car.year %> <%= @car.make %> <%= @car.model %>: </h1>
+<form method='POST' action='/cars/<%=@car.id%>'>
+<input type="hidden" name="_method" value="PATCH">
+<p>Year: <input type="text" name="car[year]" value="<%=@car.year%>"/></p>
+<p>Make: <input type="text" name="car[make]" value="<%=@car.make%>"/></p>
+<p>Model: <input type="text" name="car[model]" value="<%=@car.model%>"/></p>
+<input type="submit" value="Update Car" id="submit">
+</form>

@@ -22,6 +22,7 @@ class CarController < ApplicationController
 
     get '/cars/:id/edit' do
         @car = Car.find(params[:id])
+        erb :'cars/edit'
     end
 
     post '/cars' do
@@ -33,6 +34,8 @@ class CarController < ApplicationController
 
     patch '/cars/:id' do
         @car = Car.find(params[:id])
+        @car.update(params["car"])
+        binding.pry
     end
 
     delete '/cars/:id' do
