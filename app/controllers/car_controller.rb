@@ -35,7 +35,7 @@ class CarController < ApplicationController
     patch '/cars/:id' do
         @car = Car.find(params[:id])
         @car.update(params["car"])
-        binding.pry
+        redirect :"cars/#{@car.id}"
     end
 
     delete '/cars/:id' do
