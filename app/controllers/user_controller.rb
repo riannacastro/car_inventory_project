@@ -16,9 +16,22 @@ class UserController < ApplicationController
             session[:user_id] = user.id
             redirect to '/cars'
         end
+
     end
 
-    
+    get '/login' do
+        erb :'users/login'
+    end
+
+    post '/login' do
+        user = User.find_by_username(params[:username])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect '/cars'
+        end
+        redirect '/login'
+    end
+
 
     post '/logout' do
         session.clear
