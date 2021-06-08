@@ -7,26 +7,35 @@ class CarController < ApplicationController
         erb :'cars/index'
     end
 
+
+    get '/cars/new' do
+        erb :'cars/new'
+    end
+
+
     get '/cars/:id' do
         @car = Car.find(params[:id])
 
         erb :'cars/show'
     end
     
-    get '/cars/new' do
-    end
 
     get '/cars/:id/edit' do
+        @car = Car.find(params[:id])
     end
 
     post '/cars' do
-     end
+       @car = Car.new(params)
+       @car.save
+    end
 
     patch '/cars/:id' do
-     end
+        @car = Car.find(params[:id])
+    end
 
     delete '/cars/:id' do
-     end
+        @car = Car.find(params[:id])
+    end
 
 
 
