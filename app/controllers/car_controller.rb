@@ -25,8 +25,10 @@ class CarController < ApplicationController
     end
 
     post '/cars' do
-       @car = Car.new(params)
-       @car.save
+       car = Car.new(params)
+       car = Car.all
+       car.save
+       redirect :'/cars'
     end
 
     patch '/cars/:id' do

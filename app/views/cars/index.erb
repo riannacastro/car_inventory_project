@@ -4,9 +4,11 @@
 <h1>Car Inventory:</h1>
 <ul>
 <% @cars.each do |c| %>
-    <li><%= c.year %> <%= c.make %> <%= c.model %></li>
+    <li><a href="/cars/<%=c.id%>"><%= c.year %> <%= c.make %> <%= c.model %></li>
     <% end %>
 </ul>
+
+
 
 <form method='POST' action='/logout'>
 <input type="submit" value="Log Out">
