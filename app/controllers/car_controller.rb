@@ -3,27 +3,20 @@ require './config/environment'
 class CarController < ApplicationController
 
     get '/cars' do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         @cars = Car.all 
         erb :'cars/index'
     end
 
 
     get '/cars/new' do
-        if !logged_in?
-            redirect to '/login'
-        end
-
+        redirect_if_not_logged_in
         erb :'cars/new'
     end
 
 
     get '/cars/:id' do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         @car = Car.find(params[:id])
 
         erb :'cars/show'
@@ -31,17 +24,14 @@ class CarController < ApplicationController
     
 
     get '/cars/:id/edit' do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         @car = Car.find(params[:id])
+        redirect_if_not_authorized
         erb :'cars/edit'
     end
 
     post '/cars' do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
        car = Car.new(params)
        car.user = current_user
        car.save
@@ -49,21 +39,26 @@ class CarController < ApplicationController
     end
 
     patch '/cars/:id' do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         @car = Car.find(params[:id])
+        redirect_if_not_authorized
         @car.update(params["car"])
         redirect :"cars/#{@car.id}"
     end
 
     delete '/cars/:id' do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         @car = Car.find(params[:id])
+        redirect_if_not_authorized
         @car.destroy
         redirect :"/cars"
+    end
+
+    private
+    def redirect_if_not_authorized
+        if @car.user != current_user
+            redirect '/cars'
+        end
     end
 
 

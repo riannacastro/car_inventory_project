@@ -1,9 +1,12 @@
 <h1><%=@car.year%> <%=@car.make%> <%=@car.model%></h1>
+
+<% if @car.user == current_user %>
 <a href="/cars/<%=@car.id%>/edit">Edit Car</a>
 <form method='POST' action='/cars/<%=@car.id%>'>
 <input type="hidden" name='_method' value="DELETE">
 <input type="submit" value="Delete Car" id="submit">
 </form>
+<% end %>
 
 <div class="sidebar">
       <h3>Menu</h3>
