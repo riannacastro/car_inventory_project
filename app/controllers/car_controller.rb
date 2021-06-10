@@ -27,7 +27,7 @@ class CarController < ApplicationController
 
     post '/cars' do
        car = Car.new(params)
-       car = Car.all
+       car.user = current_user
        car.save
        redirect :'/cars'
     end

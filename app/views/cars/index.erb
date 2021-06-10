@@ -1,7 +1,7 @@
 <% if logged_in? %>
-<title> Hello, <%= current_user.username %></title> <% #not showing on page %>
+<h1> Hello, <%= current_user.username %>!</h1> <% #not showing on page %>
 <% end %>
-<h1>Car Inventory:</h1>
+<h2>Car Inventory:</h2>
 <ul>
 <% @cars.each do |c| %>
     <li><a href="/cars/<%=c.id%>"><%= c.year %> <%= c.make %> <%= c.model %></a></li>
