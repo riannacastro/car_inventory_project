@@ -6,10 +6,14 @@
 <% @cars.each do |c| %>
     <li><a href="/cars/<%=c.id%>"><%= c.year %> <%= c.make %> <%= c.model %></a></li>
     <% end %>
-</ul>
+</ul><br>
 
 
-<a href="/cars/new"><button>Create New Car</button><a/>
+
+<a href="/cars/new"><button>Create New Car</button></a>
+
 <form method='POST' action='/logout'>
 <input type="submit" value="Log Out">
 </form>
+
+      
