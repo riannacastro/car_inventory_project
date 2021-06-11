@@ -6,7 +6,12 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, 'asdfgjkl'
-   
+    set :show_exceptions, false
+  end
+
+  not_found do
+    status 404
+     erb :error
   end
 
   get "/" do
