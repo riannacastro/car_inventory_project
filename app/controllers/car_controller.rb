@@ -33,14 +33,12 @@ class CarController < ApplicationController
     post '/cars' do
         redirect_if_not_logged_in
         car = Car.new(params)
-        if car == true
-            car.user = current_user
-            car.save
-            redirect :'/cars'
-        else
+        if car.year.blank? || car.make.blank? || car.model.blank?
             redirect '/cars/new'
         end
-
+        car.user = current_user
+        car.save
+        redirect :'/cars'
     end
 
     patch '/cars/:id' do
