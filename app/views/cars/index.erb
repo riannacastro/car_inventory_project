@@ -3,7 +3,8 @@
 <% end %>
 <h2>Car Inventory:</h2>
 <ul>
-<% @cars.each do |c| %>
+
+<% current_user.cars.each do |c| %>
     <li><a href="/cars/<%=c.id%>"><%= c.year %> <%= c.make %> <%= c.model %></a></li>
     <% end %>
 </ul><br>
