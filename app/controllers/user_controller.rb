@@ -12,7 +12,6 @@ class UserController < ApplicationController
         redirect to '/signup'
         else
             user.save
-            #binding.pry
             session[:user_id] = user.id
             redirect to '/cars'
         end
